@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Colour Picker Experiment</title>
+
+  <style>
+    * {
+      margin: 0%;
+      padding: 0%;
+      box-sizing: border-box;
+    }
+    body {
+      text-align: center;
+    }
+    h1 {
+      padding: 20px;
+    }
+    input {
+      margin: 10px;
+      padding: 5px;
+    }
+
+    .colourPreview {
+      height: 200px;
+      width: 200px;
+      margin: auto;
+      border-radius: 50%;
+      border: solid 1px black;
+    }
+    .spectrum {
+      background: linear-gradient(90deg, rgb(255,0,0), rgb(255,255,0), rgb(0, 255, 0), rgb(0, 255, 255), rgb(0,0,255), rgb(255,0,255)); 
+      height: 200px;
+      margin: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <h1>Colour Picker</h1>
+    <input type="text" id="redInput" value="255">    
+    <input type="text" id="greenInput" value="255">
+    <input type="text" id="blueInput" value="255">
+    <input type="color" id="colourPicker">
+    <input type="button" id="submitColour" value="Mix my colour">
+  </div>
+    
+  <div class="colourPreview">
+
+  </div>
+  
+  <div class="spectrum">
+
+  </div>
+
+  <script>
+    // set default colour for browser colour picker
+    document.getElementById("colourPicker").value = "#9400f3";
+
+    // add submit button
+    submitColour.addEventListener("click", function(){
+
+      // retrieve values typed into input fields
+      // assign those values to variables
+      let red = document.getElementById("redInput").value;
+      let green = document.getElementById("greenInput").value;
+      let blue = document.getElementById("blueInput").value;
+      console.log(red, green, blue);
+
+      // create RGB colour from these variables
+      let colourChosen = "rgb(" + red + ", " + green + ", " + blue + ")";
+      console.log(colourChosen);
+
+      // fill sample circle with chosen colour
+      document.getElementsByClassName("colourPreview")[0].style.backgroundColor = colourChosen;
+      // need hex colour for colour picker so need to convert rgb to hex?
+      // document.getElementById("colourPicker").value = colourChosen;
+    });
+  </script>
+  
+</body>
+</html>
