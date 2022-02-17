@@ -23,10 +23,10 @@
       padding: 5px;
     }
 
-    .colourPreview {
+    .colourPreview, .colourResult {
       height: 200px;
       width: 200px;
-      margin: auto;
+      margin: 20px auto;
       border-radius: 50%;
       border: solid 1px black;
     }
@@ -50,6 +50,12 @@
     
   <div class="colourPreview">
 
+  </div>
+
+  <h2>The complementary colour is:</h2>
+  
+  <div class="colourResult">
+  
   </div>
   
   <div class="spectrum">
@@ -78,6 +84,11 @@
       document.getElementsByClassName("colourPreview")[0].style.backgroundColor = colourChosen;
       // need hex colour for colour picker so need to convert rgb to hex?
       // document.getElementById("colourPicker").value = colourChosen;
+
+      // calculate opposite complementary colour using 255 - value
+      let colourResult = "rgb(" + (255 - red) + ", " + (255 - green) + ", " + (255 - blue) + ")";
+      console.log(colourResult);
+      document.getElementsByClassName("colourResult")[0].style.backgroundColor = colourResult;
     });
   </script>
   
