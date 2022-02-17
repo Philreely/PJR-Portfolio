@@ -1,96 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Colour Picker Experiment</title>
+    <title>Colour Picker Experiment</title>
 
-  <style>
-    * {
-      margin: 0%;
-      padding: 0%;
-      box-sizing: border-box;
-    }
-    body {
-      text-align: center;
-    }
-    h1 {
-      padding: 20px;
-    }
-    input {
-      margin: 10px;
-      padding: 5px;
-    }
+    <style>
+      * {
+        margin: 0%;
+        padding: 0%;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        text-align: center;
+      }
+      h1, h2 {
+        padding: 20px;
+      }
+      input {
+        margin: 10px;
+        padding: 10px;
+        font-weight: bold;
+        outline: none;
+      }
+      input:focus {
+        border: solid 2px rgb(120, 120, 120);
+      }
+      input[type=number] {
+        width: 100px;
+        color: #fff;
+        font-size: 1.25em;
+        border-radius: 5px;
+      }
+      input[type=button] {
+        width: 150px;
+      }
 
-    .colourPreview, .colourResult {
-      height: 200px;
-      width: 200px;
-      margin: 20px auto;
-      border-radius: 50%;
-      border: solid 1px black;
-    }
-    .spectrum {
-      background: linear-gradient(90deg, rgb(255,0,0), rgb(255,255,0), rgb(0, 255, 0), rgb(0, 255, 255), rgb(0,0,255), rgb(255,0,255)); 
-      height: 200px;
-      margin: 12px;
-    }
-  </style>
-</head>
+      #redInput {
+        background-color: rgb(255,0,0);
+      }
+      #greenInput {
+        background-color: rgb(0,255,0);
+      }
+      #blueInput {
+        background-color: rgb(0,0,255);
+      }
 
-<body>
-  <div>
-    <h1>Colour Picker</h1>
-    <input type="text" id="redInput" value="255">    
-    <input type="text" id="greenInput" value="255">
-    <input type="text" id="blueInput" value="255">
-    <input type="color" id="colourPicker">
-    <input type="button" id="submitColour" value="Mix my colour">
-  </div>
+      .colourPreview, .colourResult {
+        height: 200px;
+        width: 200px;
+        margin: 20px auto;
+        border-radius: 50%;
+        border: solid 1px black;
+      }
+      .spectrum {
+        background: linear-gradient(90deg, rgb(255,0,0), rgb(255,255,0), rgb(0, 255, 0), rgb(0, 255, 255), rgb(0,0,255), rgb(255,0,255)); 
+        height: 200px;
+        margin: 12px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div>
+      <h1>Colour Picker</h1>
+      <h4>Enter RGB values below and hit Mix My Colour button to generate the complementary colour.</h4>
+      <input type="number" id="redInput" placeholder="255" min="0" max="255">    
+      <input type="number" id="greenInput" placeholder="255" min="0" max="255">
+      <input type="number" id="blueInput" placeholder="255" min="0" max="255">
+    </div>
+    <div>
+      <!--
+        remove html5 colour picker
+        need to be able to capture values from it
+      <input type="color" id="colourPicker">
+      -->
+
+      <input type="button" id="submitColour" value="Mix My Colour">
+    </div>
+      
+    <p>You have chosen R: <span id="redValueIn"></span> G: <span id="greenValueIn"></span> B: <span id="blueValueIn"></span></p>
     
-  <div class="colourPreview">
+    <div class="colourPreview">
+    </div>
 
-  </div>
+    <h2>The complementary colour is:</h2>
+    
+    <p>R: <span id="redValueOut"></span> G: <span id="greenValueOut"></span> B: <span id="blueValueOut"></span></p>
 
-  <h2>The complementary colour is:</h2>
-  
-  <div class="colourResult">
-  
-  </div>
-  
-  <div class="spectrum">
+    <div class="colourResult">
+    </div>
+    
+    <div class="spectrum">
+    </div>
 
-  </div>
+    <script>
+      // set default colour for browser colour picker
+      // document.getElementById("colourPicker").value = "#9400f3";
 
-  <script>
-    // set default colour for browser colour picker
-    document.getElementById("colourPicker").value = "#9400f3";
+      // add submit button
+      submitColour.addEventListener("click", function(){
 
-    // add submit button
-    submitColour.addEventListener("click", function(){
+        // retrieve values typed into input fields
+        // assign those values to variables
+        let red = document.getElementById("redInput").value;
+        let green = document.getElementById("greenInput").value;
+        let blue = document.getElementById("blueInput").value;
+        console.log(red, green, blue);
 
-      // retrieve values typed into input fields
-      // assign those values to variables
-      let red = document.getElementById("redInput").value;
-      let green = document.getElementById("greenInput").value;
-      let blue = document.getElementById("blueInput").value;
-      console.log(red, green, blue);
+        // display chosen rgb input
+        document.getElementById("redValueIn").innerHTML = red;
+        document.getElementById("greenValueIn").innerHTML = green;
+        document.getElementById("blueValueIn").innerHTML = blue;
 
-      // create RGB colour from these variables
-      let colourChosen = "rgb(" + red + ", " + green + ", " + blue + ")";
-      console.log(colourChosen);
+        // create RGB colour from these variables
+        let colourChosen = "rgb(" + red + ", " + green + ", " + blue + ")";
+        console.log(colourChosen);
 
-      // fill sample circle with chosen colour
-      document.getElementsByClassName("colourPreview")[0].style.backgroundColor = colourChosen;
-      // need hex colour for colour picker so need to convert rgb to hex?
-      // document.getElementById("colourPicker").value = colourChosen;
+        // fill sample circle with chosen colour
+        document.getElementsByClassName("colourPreview")[0].style.backgroundColor = colourChosen;
+        // need hex colour for colour picker so need to convert rgb to hex?
+        // document.getElementById("colourPicker").value = colourChosen;
 
-      // calculate opposite complementary colour using 255 - value
-      let colourResult = "rgb(" + (255 - red) + ", " + (255 - green) + ", " + (255 - blue) + ")";
-      console.log(colourResult);
-      document.getElementsByClassName("colourResult")[0].style.backgroundColor = colourResult;
-    });
-  </script>
-  
-</body>
+        // calculate opposite complementary colour using 255 - value
+        let colourResult = "rgb(" + (255 - red) + ", " + (255 - green) + ", " + (255 - blue) + ")";
+        console.log(colourResult);
+        document.getElementsByClassName("colourResult")[0].style.backgroundColor = colourResult;
+
+        // display chosen rgb output
+        document.getElementById("redValueOut").innerHTML = 255 - red;
+        document.getElementById("greenValueOut").innerHTML = 255 - green;
+        document.getElementById("blueValueOut").innerHTML = 255 - blue;
+      });
+    </script>
+    
+  </body>
 </html>
