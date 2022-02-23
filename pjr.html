@@ -1,11 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Philip Reely CV</title>
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather|Open+Sans">
 
     <style>
-       /* browser reset */
+    /* browser reset */
       * {
         box-sizing: border-box;
         margin: 0%;
@@ -15,36 +19,86 @@
         display: block;
         width: 100%;
       }
-      /* typography */
+
+    /* typography */
       body {
         font: 1em "Open Sans", Arial, sans-serif; 
+        color: #fff;
       }
       h1 {
-        font: 3em Merriweather, Times, serif;
+        font: 3em "Merriweather", Times, serif;
       }
 
-      /* graphic styling */
-      div {
-    background: linear-gradient(to bottom right, #0066cc 0%, #cc66ff 100%);
-}
+    /* graphic styling */
+      @keyframes backgroundGradient {
+        0% {background-position: 0% 50%}
+        50% {background-position: 100% 50%}
+        100% {background-position: 0% 50%}
+      }
       body {
-        background: linear-gradient(135deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 80%, rgba(148,187,233,0.5) 100%);
+        background: linear-gradient(135deg, #0066cc, #cc66ff);
+        background-size: 400% 400%;
+        animation-name: backgroundGradient;
+        animation-duration: 15s;
+        animation-timing-function: ease;
+        animation-iteration-count: infinite;
       }
       html {
-        height: 100%;
+        height: 100vh;
+        padding: 0 2em;
+      }
+      main {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        row-gap: 20px;
+      }
+      /*
+      nav {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        min-height: 3vh;
+        gap: 10px;
+        justify-content: flex-end;
+      }
+      */
+      .bioNav a {
+        text-decoration: none;
+        color: #fff;
+        transition: 0.2s;
+      }
+      .bioNav a:hover {
+        background: #cc66ff;
+        color: #fff;
+        padding: 0.2em;
+      }
+      .nav-brand {
+        margin-right: auto;
+        padding: 1em 0;
       }
     </style>
   </head>
   <body>
+    <!-- 
+    <nav>
+      <p class="nav-brand">Philip Reely CV</p>
+      <a href="#">Web</a>
+      <a href="#">Print</a>
+      <a href="#">Design</a>
+      <a href="#">Contact</a>
+    </nav>
+    -->
     <main>
-      <nav>
-        <a href="#">Web</a>
-        <a href="#">Print</a>
-        <a href="#">Design</a>
-        <a href="#">Contact</a>
-      </nav>
-      <h1>Philip Reely CV</h1>
-      <p>About me</p>
+      <h1>Philip Reely</h1>
+      <p>Short bio goes here</p>
+      <h2 class="bioNav"><a href="#">Front End Web Developer</a></h2>
+      <h2 class="bioNav"><a href="#">Graphic Designer & Typesetter</a></h2>
+      <h2 class="bioNav"><a href="#">Print Production</a></h2>
+      <h2 class="bioNav"><a href="#">Event Manager</a></h2>
+      <h2 class="bioNav"><a href="#">Photographer</a></h2>
+      <h2 class="bioNav"><a href="#">Contact</a></h2>
     </main>
   </body>
 </html>
