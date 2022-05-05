@@ -1,0 +1,79 @@
+/* browser reset */
+  html, body, div, span, a, h1, h2, h3, h4, h5, h6, p, blockquote, img, 
+  ol, ul, li, input, label, select, footer, header, menu, nav, section {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  img, picture {
+    display: block;
+    width: 100%;
+  }
+
+/* typography */
+  body, nav {
+    font: 1em "Open Sans", Arial, sans-serif; 
+    color: #fff;
+  }
+  h1 {
+    font: 3em "Merriweather", Times, serif;
+  }
+
+/* graphic styling */
+  @keyframes backgroundGradient {
+    0% {background-position: 0% 50%}
+    50% {background-position: 100% 50%}
+    100% {background-position: 0% 50%}
+  }
+  a {
+    text-decoration: none;
+    color: #fff;
+    transition: 0.25s;
+  }
+  a:hover {
+    background: #cc66ff;
+    color: #fff;
+    padding: 0.2em;
+  }
+  body {
+    background: linear-gradient(135deg, #0066cc, #cc66ff);
+    background-size: 400% 400%;
+    animation-name: backgroundGradient;
+    animation-duration: 15s;
+    animation-timing-function: ease;
+    animation-iteration-count: infinite;
+  }
+  html {
+    height: 100vh;
+    padding: 0 2em;
+  }
+  main {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    row-gap: 20px;
+  }
+  nav {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    min-height: 3vh;
+    gap: 20px;
+    justify-content: flex-end;
+  }
+  
+  .bioNav a {
+    text-decoration: none;
+    color: #fff;
+    transition: 0.25s;
+  }
+  .bioNav a:hover {
+    background: #cc66ff;
+    color: #fff;
+    padding: 0.2em;
+  }
+  .nav-brand {
+    margin-right: auto;
+    padding: 1em 0;
+  }
