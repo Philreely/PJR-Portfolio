@@ -39,7 +39,7 @@
     background: linear-gradient(135deg, #0066cc, #cc66ff);
     background-size: 400% 400%;
     animation-name: backgroundGradient;
-    animation-duration: 15s;
+    animation-duration: 10s;
     animation-timing-function: ease;
     animation-iteration-count: infinite;
   }
@@ -47,7 +47,7 @@
     height: 100vh;
     padding: 0 2em;
   }
-  main {
+  .homeMenu {
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -63,6 +63,7 @@
     justify-content: flex-end;
   }
   
+  /* redundant styles
   .bioNav a {
     text-decoration: none;
     color: #fff;
@@ -73,7 +74,5 @@
     color: #fff;
     padding: 0.2em;
   }
-  .nav-brand {
-    margin-right: auto;
-    padding: 1em 0;
-  }
+  */
+  
